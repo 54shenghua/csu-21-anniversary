@@ -1,10 +1,43 @@
 <template>
   <div id="app">
-    <transition :name="`${['forbidden', 'loading'].includes($route.name) ? '' : 'fade'}`">
+    <!-- <transition :name="`${['forbidden', 'loading', 'home'].includes($route.name) ? '' : 'fade'}`"> -->
       <router-view />
-    </transition>
+    <!-- </transition> -->
   </div>
 </template>
+
+<script>
+import { login } from './api'
+
+export default {
+  name: 'App',
+  mounted () {
+    if (process.env.NODE_ENV === 'production') {
+      const res = window.location.search.substr(1).match(/(^|&|\?)code=([^&]*)(&|$)/)
+      let code = ''
+      if (res) {
+        code = unescape(res[2])
+      }
+      if (!code) {
+        window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2fdfc27744ffa252&redirect_uri=https%3A%2F%2Fcsu21.54sher.com&response_type=code&scope=snsapi_userinfo#wechat_redirect'
+      } else {
+        this.$router.replace({ name: 'home', params: { router: true } })
+        login(code)
+          .then((res) => {
+            // localStorage.setItem('openid', res.data.data.wx_openid)
+          })
+          .catch(() => {})
+      }
+    } else {
+      login('')
+        .then((res) => {
+          // localStorage.setItem('openid', res.data.data.wx_openid)
+        })
+        .catch(() => {})
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
   #app {
