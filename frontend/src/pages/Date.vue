@@ -12,7 +12,7 @@
         :formatter="formatter"
       />
     </van-popup>
-    <input @click="clickHdl" readonly />
+    <input :value="dateShown" @click="clickHdl" readonly />
   </div>
 </template>
 
@@ -28,8 +28,9 @@ export default {
   data () {
     return {
       showPicker: false,
-      datePicked: {},
-      minDate: new Date(1960, 1, 1),
+      datePicked: new Date(),
+      dateShown: '',
+      minDate: new Date(1903, 1, 1),
       maxDate: new Date()
     }
   },
@@ -42,9 +43,14 @@ export default {
     },
     pickerConfirmHdl (value) {
       this.showPicker = false
+      // this.dateShown = dayjs(this.datePicked).format('YYYY 年 MM 月 DD 日')
     },
     formatter (type, val) {
       return val + formatterMap[type]
+    },
+    submit () {
+      // localStorage.setItem('time', dayjs(this.datePicked).format('YYYY-MM-DD'))
+      this.$router.replace({ name: 'campus', params: { router: true } })
     }
   }
 }
