@@ -15,6 +15,11 @@ const routes = [
     component: () => import('./pages/Home.vue')
   },
   {
+    path: '/transition',
+    name: 'transition',
+    component: () => import('./pages/Transition.vue')
+  },
+  {
     path: '/profile',
     name: 'profile',
     component: () => import('./pages/Profile.vue')
@@ -53,7 +58,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (process.env.NODE_ENV === 'production') {
-    if (!['loading', 'forbidden'].includes(to.name) && !to.params.router) {
+    if (!['loading', 'home', 'forbidden'].includes(to.name) && !to.params.router) {
       next('/forbidden')
     } else {
       next()
