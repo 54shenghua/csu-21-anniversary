@@ -1,6 +1,31 @@
+$font-color: rgb(6,76,148);
+
 .container {
   height: 100%;
   width: 100%;
+}
+
+button {
+  height: 3.5rem;
+  width: 6.84rem;
+  background-image: url('../assets/button.png');
+  background-size: cover;
+  background-color: initial;
+  border: none;
+  outline: none;
+  font-family: button;
+  font-size: 1.1rem;
+  color: white;
+  padding: {
+    left: .7rem;
+    top: .4rem;
+  }
+  transition: transform .5s;
+
+  &:active {
+    transform: scale(.9);
+    transition: transform .5s;
+  }
 }
 
 @font-face {
@@ -11,4 +36,36 @@
 @font-face {
   font-family: subtitle;
   src: url('../assets/fonts/subtitle.ttf');
+}
+
+@font-face {
+  font-family: transition;
+  src: url('../assets/fonts/transition.ttf');
+}
+
+@font-face {
+  font-family: button;
+  src: url('../assets/fonts/button.ttf');
+}
+
+@keyframes fade-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
