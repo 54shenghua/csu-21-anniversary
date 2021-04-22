@@ -1,12 +1,16 @@
 <template>
   <div class="container">
-    <div class="logo" />
-    <div class="text-box birthday-box">
+    <div class="logo fade-slide-down" style="animation-delay: .5s" />
+    <div class="text-box birthday-box fade-slide-down" style="animation-delay: .8s">
       <span class="birthday">亲爱的中南，祝你生日快乐！</span>
     </div>
-    <div class="text-box title-box">
+    <div class="text-box title-box fade-slide-down" style="animation-delay: 1.1s">
       <span class="title">拾光中南</span>
       <span class="subtitle">中南大学合并组建21周年</span>
+    </div>
+    <div class="tip-box fade-slide-down">
+      <span>点击开启拾光之旅</span>
+      <img src="../assets/click.png" class="click" />
     </div>
     <div class="start-box" @click="start">
       <div class="circle first-circle" />
@@ -81,6 +85,36 @@ export default {
       }
     }
 
+    .tip-box {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      position: absolute;
+      bottom: 37%;
+      opacity: 0;
+      animation: slide-down, fade;
+      animation-duration: 1s, .5s;
+      animation-delay: 1.1s, 1.1s;
+      animation-timing-function: ease-in-out, linear;
+      animation-iteration-count: infinite, 1;
+      animation-fill-mode: forwards;
+      -webkit-animation-fill-mode: forwards;
+
+      span {
+        font-size: .7rem;
+        color: white;
+        font-family: subtitle;
+        letter-spacing: 5px;
+      }
+
+      .click {
+        height: 1.8rem;
+        margin-top: .5rem;
+      }
+    }
+
     .start-box {
       height: 3rem;
       width: 3rem;
@@ -88,8 +122,12 @@ export default {
       justify-content: center;
       align-items: center;
       position: absolute;
-      bottom: 31%;
+      bottom: 28%;
       left: calc(50% - 1.5rem);
+      opacity: 0;
+      animation: fade .5s 1.1s;
+      animation-fill-mode: forwards;
+      -webkit-animation-fill-mode: forwards;
 
       .circle {
         border: 1px solid white;
@@ -112,6 +150,13 @@ export default {
     }
   }
 
+  .fade-slide-down {
+    opacity: 0;
+    animation: fade-slide-down 1.3s;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+  }
+
   @keyframes spread {
     0% {
       opacity: .2;
@@ -126,6 +171,16 @@ export default {
     100% {
       opacity: 0;
       transform: scale(2);
+    }
+  }
+
+  @keyframes slide-down {
+    from {
+      transform: translateY(-10px);
+    }
+
+    to {
+      transform: translateY(0);
     }
   }
 </style>
