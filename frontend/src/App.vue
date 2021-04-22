@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <!-- <transition :name="`${['forbidden', 'loading', 'home'].includes($route.name) ? '' : 'fade'}`"> -->
+    <transition :name="`${['forbidden', 'loading', 'home'].includes($route.name) ? '' : 'fade'}`">
       <router-view />
-    <!-- </transition> -->
+    </transition>
   </div>
 </template>
 
@@ -47,14 +47,17 @@ export default {
     height: 100%;
     width: 100%;
     overflow: hidden;
+    background-image: url('./assets/2bg.png');
+    background-position: center center;
+    background-size: cover;
   }
 
   .fade-enter-active {
-    transition: opacity .5s .5s;
+    transition: opacity .8s .7s;
   }
 
   .fade-leave-active {
-    transition: opacity .5s;
+    transition: opacity .8s;
   }
 
   .fade-enter, .fade-leave-to {
