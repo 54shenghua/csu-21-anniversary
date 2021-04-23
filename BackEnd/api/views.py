@@ -76,6 +76,8 @@ def click(request):
     this_event_name = None
     this_campus_name = None
     if request.method == 'POST':
+        if request.META.get('HTTP_OPENID') is None:
+            return HttpResponse('请求出错')
         received_json_data = json.loads(request.body)
         openid = received_json_data['openid']
         name = received_json_data['name']
