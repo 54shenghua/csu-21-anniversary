@@ -16,7 +16,7 @@
             <select-item index="3" text="穿过B、C座之间的廊桥" :onClick="clickHdl" />
             <select-item index="4" text='为CUBA"西南王"欢呼喝彩' :onClick="clickHdl" />
             <select-item index="5" text='在网红食堂"八食堂"干饭' :onClick="clickHdl" />
-            <select-item index="6" text="为体侧坚持晨练" :onClick="clickHdl" />
+            <select-item index="6" text="为体测坚持晨练" :onClick="clickHdl" />
             <select-item index="7" text="打卡中南大学校门" :onClick="clickHdl" />
             <select-item index="8" text="驻足天鹅湖畔" :onClick="clickHdl" />
             <select-item index="9" text="踩着单车去上课" :onClick="clickHdl" />
@@ -64,7 +64,7 @@ export default {
           scrollY: true,
           click: true
         })
-      }, 800)
+      }, 1000)
     })
   },
   updated () {
