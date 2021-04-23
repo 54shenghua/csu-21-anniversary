@@ -13,18 +13,18 @@ button {
   background-color: initial;
   border: none;
   outline: none;
-  font-family: button;
+  font-family: fangzheng;
   font-size: 1.1rem;
   color: white;
   padding: {
     left: .7rem;
     top: .4rem;
   }
-  transition: transform .5s;
+  transition: transform .3s;
 
   &:active {
     transform: scale(.9);
-    transition: transform .5s;
+    transition: transform .3s;
   }
 }
 
@@ -44,8 +44,13 @@ button {
 }
 
 @font-face {
-  font-family: button;
-  src: url('../assets/fonts/button.ttf');
+  font-family: fangzheng;
+  src: url('../assets/fonts/fangzheng.ttf');
+}
+
+@font-face {
+  font-family: moment;
+  src: url('../assets/fonts/moment.ttf');
 }
 
 @keyframes fade-slide-down {
