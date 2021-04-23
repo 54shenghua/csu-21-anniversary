@@ -1,6 +1,6 @@
 <template>
   <div class="select-item-container" @click="clickHdl">
-    <img :src="require(`../assets/${type}/${index}.jpg`)" :style="`opacity:${active ? 1 : 0.5};`" />
+    <img :src="require(`../assets/campus/${index}.jpg`)" :style="`opacity:${active ? 1 : 0.5};`" />
     <div class="text-box">
       <div class="text" :style="`background-color:rgb(${active ? '6,76,148' : '237,237,237'});`">
         <span :style="`color:${active ? 'white' : 'rgb(6,76,148)'}`">{{text}}</span>
@@ -21,10 +21,6 @@ export default {
     index: {
       type: String,
       default: -1
-    },
-    type: {
-      type: String,
-      default: ''
     },
     text: {
       type: String,
@@ -60,7 +56,7 @@ export default {
     }
 
     img {
-      width: 75%;
+      width: 76%;
       transition: opacity .5s;
     }
 
