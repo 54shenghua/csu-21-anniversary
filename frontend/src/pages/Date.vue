@@ -13,6 +13,7 @@
       />
     </van-popup>
     <input :value="dateShown" @click="clickHdl" readonly />
+    <button @click="submit">下一步</button>
   </div>
 </template>
 
