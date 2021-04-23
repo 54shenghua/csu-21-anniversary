@@ -5,12 +5,12 @@
       <span>我在中南的那些日子里</span>
       <span>打卡过这些校区</span>
       <div class="content">
-        <select-item index="0" type="campus" text="校本部" :onClick="clickHdl" />
-        <select-item index="1" type="campus" text="新校区" :onClick="clickHdl" />
-        <select-item index="2" type="campus" text="南校区" :onClick="clickHdl" />
-        <select-item index="3" type="campus" text="铁道校区" :onClick="clickHdl" />
-        <select-item index="4" type="campus" text="湘雅校区" :onClick="clickHdl" />
-        <select-item index="5" type="campus" text="湘雅新校区" :onClick="clickHdl" />
+        <select-item index="0" text="校本部" :onClick="clickHdl" />
+        <select-item index="1" text="新校区" :onClick="clickHdl" />
+        <select-item index="2" text="南校区" :onClick="clickHdl" />
+        <select-item index="3" text="铁道校区" :onClick="clickHdl" />
+        <select-item index="4" text="湘雅校区" :onClick="clickHdl" />
+        <select-item index="5" text="湘雅新校区" :onClick="clickHdl" />
       </div>
       <button @click="submit">下一步</button>
     </div>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import SelectItem from '../components/SelectItem.vue'
+import SelectItem from '../components/CampusSelectItem.vue'
 
 export default {
   name: 'Campus',
@@ -37,8 +37,12 @@ export default {
       console.log(this.campus)
     },
     submit () {
+      if (this.campus.length === 0) {
+        this.$toast('请选择一项记忆哦')
+        return
+      }
       localStorage.setItem('campus', this.campus)
-      this.$router.replace({ name: 'memory', params: { router: true } })
+      this.$router.replace({ name: 'moment', params: { router: true } })
     }
   }
 }
@@ -109,6 +113,7 @@ export default {
       background-size: cover;
       position: absolute;
       bottom: 0;
+      pointer-events: none;
     }
   }
 </style>
