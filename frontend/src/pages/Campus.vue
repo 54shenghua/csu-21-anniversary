@@ -52,7 +52,7 @@ export default {
   @import '../styles/global.scss';
 
   .container {
-    background-image: url('../assets/bg2.png');
+    background-image: url('../assets/bg2.jpg');
     background-position: bottom center;
     background-size: cover;
     position: relative;

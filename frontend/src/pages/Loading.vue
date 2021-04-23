@@ -20,7 +20,7 @@ export default {
 
 <style lang="scss" scoped>
   .container {
-    background-image: url('../assets/bg.png');
+    background-image: url('../assets/bg.jpg');
     background-position: bottom center;
     background-size: cover;
     display: flex;

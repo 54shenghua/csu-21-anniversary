@@ -47,7 +47,7 @@ export default {
     height: 100%;
     width: 100%;
     overflow: hidden;
-    background-image: url('./assets/bg2.png');
+    background-image: url('./assets/bg2.jpg');
     background-position: center center;
     background-size: cover;
   }
