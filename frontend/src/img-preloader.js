@@ -1,7 +1,7 @@
 const imgs = [
   'bg.jpg',
-  'summary-title.png',
-  'gate.png',
+  // 'summary-title.png',
+  // 'gate.png',
   'mountain.png',
   'content-box.png',
   'logo.png',
@@ -12,19 +12,19 @@ const imgs = [
   'blue-logo.png',
   'avatar-inner.png',
   'click.png',
-  'summary-bg.jpg',
+  // 'summary-bg.jpg',
   'white-bg.png',
   'qrcode.png'
 ]
 
-for (let i = 0; i < 21; ++i) {
-  if (i < 6) {
-    imgs.push(`campus/${i}.jpg`)
-    imgs.push(`summary/campus/${i}.png`)
-  }
-  imgs.push(`moments/${i}.jpg`)
-  imgs.push(`summary/moments/${i}.jpg`)
-}
+// for (let i = 0; i < 21; ++i) {
+//   if (i < 6) {
+//     imgs.push(`campus/${i}.jpg`)
+//     imgs.push(`summary/campus/${i}.png`)
+//   }
+//   imgs.push(`moments/${i}.jpg`)
+//   imgs.push(`summary/moments/${i}.jpg`)
+// }
 
 const prefix = 'https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/'
 
