@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <transition :name="`${['forbidden', 'loading', 'home'].includes($route.name) ? '' : 'fade'}`">
+    <transition :name="`${['forbidden', 'loading', 'home', 'date'].includes($route.name) ? '' : 'fade'}`">
       <router-view />
     </transition>
   </div>
@@ -47,7 +47,7 @@ export default {
     height: 100%;
     width: 100%;
     overflow: hidden;
-    background-image: url('./assets/bg2.jpg');
+    background-image: url('https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/bg2.jpg');
     background-position: center center;
     background-size: cover;
   }
