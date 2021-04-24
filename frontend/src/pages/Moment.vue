@@ -75,7 +75,6 @@ export default {
       this.moments.push(id)
     },
     submit () {
-      console.log('this.moments: ', this.moments)
       if (this.moments.length === 0) {
         this.$toast('请选择一项记忆哦')
         return
