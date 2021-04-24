@@ -267,11 +267,13 @@ export default {
             div {
               &:nth-child(1) {
                 span {
-                  font-size: 12px;
-
                   &:nth-child(1) {
                     font-size: 1.1rem;
                     font-family: moment-bold;
+                  }
+
+                  &:nth-child(2) {
+                    font-size: 14px;
                   }
                 }
               }
@@ -309,7 +311,7 @@ export default {
             display: flex;
             flex-wrap: wrap;
             margin: {
-              top: 3.7rem;
+              top: 3.3rem;
               left: auto;
             }
 
