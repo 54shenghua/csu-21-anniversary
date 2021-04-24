@@ -53,6 +53,16 @@ button {
   src: url('../assets/fonts/moment.ttf');
 }
 
+@font-face {
+  font-family: moment-bold;
+  src: url('../assets/fonts/moment-bold.ttf');
+}
+
+@font-face {
+  font-family: summary-bottom;
+  src: url('../assets/fonts/summary-bottom.ttf');
+}
+
 @keyframes fade-slide-down {
   from {
     opacity: 0;
