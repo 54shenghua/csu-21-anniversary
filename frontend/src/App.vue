@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <transition :name="`${['forbidden', 'loading', 'home', 'date'].includes($route.name) ? '' : 'fade'}`">
+    <transition :name="`${['forbidden', 'loading', 'home'].includes($route.name) ? '' : 'fade'}`">
       <router-view />
     </transition>
   </div>
