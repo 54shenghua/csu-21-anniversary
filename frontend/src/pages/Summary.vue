@@ -3,7 +3,7 @@
     <div id="export" class="content-box">
       <div class="content">
         <div class="logo">
-          <img src="https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/blue-logo.png"/>
+          <img src="../assets/blue-logo.png"/>
         </div>
         <div class="title" />
         <div class="campus">
@@ -20,7 +20,7 @@
               <span>{{'校本部、新校区、南校区、铁道校区、湘雅校区、湘雅新校区'}}</span>
             </div>
             <div class="campus-img-box">
-              <img class="campus-img" v-for="item in $store.campus" :key="item" :src="`https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/summary/campus/${item}.png`" />
+              <img class="campus-img" v-for="item in $store.campus" :key="item" :src="require(`../assets/summary/campus/${item}.png`)" />
             </div>
           </div>
         </div>
@@ -39,14 +39,14 @@
             </div>
           </div>
           <div class="moment-img-box">
-            <img class="moment-img" v-for="item in $store.moments" :key="item" :src="`https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/summary/moments/${item}.jpg`" />
+            <img class="moment-img" v-for="item in $store.moments" :key="item" :src="require(`../assets/summary/moments/${item}.jpg`)" />
           </div>
         </div>
         <div class="gate">
-          <img src="https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/gate.png" />
+          <img src="../assets/gate.png" />
         </div>
         <div class="bottom">
-          <img src="https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/qrcode.png" />
+          <img src="../assets/qrcode.png" />
           <span>扫码生成</span>
           <span>拾光中南</span>
           <span>长按保存你的结果页</span>
@@ -154,7 +154,7 @@ export default {
 
     .content-box {
       width: 22rem;
-      background-image: url('https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/summary-bg.jpg');
+      background-image: url('../assets/summary-bg.jpg');
       background-position: top center;
       background-size: cover;
 
@@ -183,7 +183,7 @@ export default {
             top: .5rem;
             bottom: 1rem;
           }
-          background-image: url('https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/summary-title.png');
+          background-image: url('../assets/summary-title.png');
           background-position: center center;
           background-size: contain;
           background-repeat: no-repeat;
