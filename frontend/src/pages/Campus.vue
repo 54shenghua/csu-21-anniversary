@@ -38,7 +38,7 @@ export default {
     },
     submit () {
       if (this.campus.length === 0) {
-        this.$toast('请选择一项记忆哦')
+        this.$toast('请选择一个打卡过的校区哦')
         return
       }
       localStorage.setItem('campus', this.campus)
