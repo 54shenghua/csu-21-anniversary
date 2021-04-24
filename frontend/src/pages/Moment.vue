@@ -81,6 +81,7 @@ export default {
         return
       }
       // localStorage.setItem('moments', this.moments)
+      this.$store.moments = this.moments
       this.$router.replace({ name: 'summary', params: { router: true } })
     }
   }
@@ -91,7 +92,7 @@ export default {
   @import '../styles/global.scss';
 
   .container {
-    background-image: url('../assets/bg2.jpg');
+    background-image: url('https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/bg2.jpg');
     background-position: bottom center;
     background-size: cover;
     position: relative;
@@ -102,7 +103,7 @@ export default {
     .logo {
       height: 20%;
       width: 100%;
-      background-image: url('../assets/logo.png');
+      background-image: url('https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/logo.png');
       background-position: top center;
       background-size: cover;
       position: absolute;
@@ -112,7 +113,7 @@ export default {
     .content-box {
       height: 100%;
       width: 100%;
-      background-image: url('../assets/white-bg.png');
+      background-image: url('https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/white-bg.png');
       background-position: top center;
       background-size: cover;
       margin-top: 12.5vh;
@@ -170,7 +171,7 @@ export default {
     .mountains {
       height: 17%;
       width: 100%;
-      background-image: url('../assets/mountain.png');
+      background-image: url('https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/mountain.png');
       background-position: bottom center;
       background-size: cover;
       position: absolute;

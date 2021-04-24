@@ -10,11 +10,14 @@
     </div>
     <div class="tip-box fade-slide-down">
       <span>点击开启拾光之旅</span>
-      <img src="../assets/click.png" class="click" />
+      <img src="https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/click.png" class="click" />
     </div>
     <div class="start-box" @click="start">
       <div class="circle first-circle" />
       <div class="circle second-circle" />
+    </div>
+    <div class="copyright">
+      <span>升华工作室 提供技术支持</span>
     </div>
   </div>
 </template>
@@ -34,7 +37,7 @@ export default {
   @import '../styles/global.scss';
 
   .container {
-    background-image: url('../assets/bg.jpg');
+    background-image: url('https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/bg.jpg');
     background-position: bottom center;
     background-size: cover;
     position: relative;
@@ -42,7 +45,7 @@ export default {
     .logo {
       height: 100%;
       width: 100%;
-      background-image: url('../assets/logo.png');
+      background-image: url('https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/logo.png');
       background-position: top center;
       background-size: cover;
     }
@@ -147,6 +150,22 @@ export default {
         width: 1.5rem;
         animation-delay: .5s;
       }
+    }
+
+    .copyright {
+      width: 100%;
+      position: absolute;
+      bottom: 5px;
+      text-align: center;
+      font-family: subtitle;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: white;
+      transform: scale(.8);
+      opacity: 0;
+      animation: fade .5s 1.3s;
+      animation-fill-mode: forwards;
+      -webkit-animation-fill-mode: forwards;
     }
   }
 

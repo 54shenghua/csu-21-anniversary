@@ -28,7 +28,7 @@ export default {
   @import '../styles/global.scss';
 
   .container {
-    background-image: url('../assets/bg2.jpg');
+    background-image: url('https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/bg2.jpg');
     background-position: center center;
     background-size: cover;
     position: relative;
@@ -40,7 +40,7 @@ export default {
       $logo-size: 15vh;
       height: $logo-size;
       width: $logo-size;
-      background-image: url('../assets/trans-logo.png');
+      background-image: url('https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/trans-logo.png');
       background-size: cover;
       position: absolute;
       top: 3%;
@@ -49,7 +49,7 @@ export default {
     .content-box {
       height: 75%;
       width: 80%;
-      background-image: url('../assets/content-box.png');
+      background-image: url('https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/content-box.png');
       background-position: center center;
       background-size: cover;
       margin-top: 15%;

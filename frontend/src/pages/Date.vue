@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import dayjs from 'dayjs'
+
 const formatterMap = {
   year: '年',
   month: '月',
@@ -44,13 +46,13 @@ export default {
     },
     pickerConfirmHdl (value) {
       this.showPicker = false
-      // this.dateShown = dayjs(this.datePicked).format('YYYY 年 MM 月 DD 日')
+      this.dateShown = dayjs(this.datePicked).format('YYYY 年 MM 月 DD 日')
     },
     formatter (type, val) {
       return val + formatterMap[type]
     },
     submit () {
-      // localStorage.setItem('time', dayjs(this.datePicked).format('YYYY-MM-DD'))
+      localStorage.setItem('time', dayjs(this.datePicked).format('YYYY-MM-DD'))
       this.$router.replace({ name: 'campus', params: { router: true } })
     }
   }

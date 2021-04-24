@@ -1,6 +1,6 @@
 <template>
   <div class="select-item-container" @click="clickHdl">
-    <img :src="require(`../assets/campus/${index}.jpg`)" :style="`opacity:${active ? 1 : 0.5};`" />
+    <img :src="`https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/campus/${index}.jpg`" :style="`opacity:${active ? 1 : 0.5};`" />
     <div class="text-box">
       <div class="text" :style="`background-color:rgb(${active ? '6,76,148' : '237,237,237'});`">
         <span :style="`color:${active ? 'white' : 'rgb(6,76,148)'}`">{{text}}</span>

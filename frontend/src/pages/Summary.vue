@@ -1,18 +1,18 @@
 <template>
-  <div class="container" :style="`transform: scale(${scaleRate})`">
+  <div class="container" :style="`transform: scale(${scaleRate}); visibility: ${spawned ? 'visible' : 'none'}`">
     <div id="export" class="content-box">
       <div class="content">
         <div class="logo">
-          <img src="../assets/blue-logo.png"/>
+          <img src="https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/blue-logo.png"/>
         </div>
         <div class="title" />
         <div class="campus">
           <div class="avatar" />
           <div class="campus-text">
             <div>
-              <span>{{'名字测试'}}</span>
+              <span>{{$store.username}}</span>
               <span>，在与中南相遇后的</span>
-              <span>{{36500}}</span>
+              <span>{{$store.calcDays()}}</span>
               <span>天里</span>
             </div>
             <div>
@@ -20,7 +20,7 @@
               <span>{{'校本部、新校区、南校区、铁道校区、湘雅校区、湘雅新校区'}}</span>
             </div>
             <div class="campus-img-box">
-              <img class="campus-img" v-for="item in campus" :key="item" :src="require(`../assets/summary/campus/${item}.png`)" />
+              <img class="campus-img" v-for="item in $store.campus" :key="item" :src="`https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/summary/campus/${item}.png`" />
             </div>
           </div>
         </div>
@@ -28,45 +28,25 @@
           <div class="text">
             <div>
               <span>属于 </span>
-              <span>{{'名字测试'}}</span>
+              <span>{{$store.username}}</span>
             </div>
             <div>
               <span>的 </span>
               <span>中南记忆#</span>
               <div class="moments-box">
-                <span>为CUBA“西南王”喝彩</span>
-                <span>为CUBA“西南王”喝彩</span>
-                <span>为CUBA“西南王”喝彩</span>
-                <span>为CUBA“西南王”喝彩</span>
-                <span>为CUBA“西南王”喝彩</span>
-                <span>为CUBA“西南王”喝彩</span>
-                <span>为CUBA“西南王”喝彩</span>
-                <span>为CUBA“西南王”喝彩</span>
-                <span>为CUBA“西南王”喝彩</span>
-                <span>为CUBA“西南王”喝彩</span>
-                <span>为CUBA“西南王”喝彩</span>
-                <span>为CUBA“西南王”喝彩</span>
-                <span>为CUBA“西南王”喝彩</span>
-                <span>为CUBA“西南王”喝彩</span>
-                <span>为CUBA“西南王”喝彩</span>
-                <span>为CUBA“西南王”喝彩</span>
-                <span>为CUBA“西南王”喝彩</span>
-                <span>为CUBA“西南王”喝彩</span>
-                <span>为CUBA“西南王”喝彩</span>
-                <span>为CUBA“西南王”喝彩</span>
-                <span>为CUBA“西南王”喝彩</span>
+                <span v-for="item in $store.moments" :key="item">{{momentsMap[item]}}</span>
               </div>
             </div>
           </div>
           <div class="moment-img-box">
-            <img class="moment-img" v-for="item in moments" :key="item" :src="require(`../assets/summary/moments/${item}.jpg`)" />
+            <img class="moment-img" v-for="item in $store.moments" :key="item" :src="`https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/summary/moments/${item}.jpg`" />
           </div>
         </div>
         <div class="gate">
-          <img src="../assets/gate.png" />
+          <img src="https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/gate.png" />
         </div>
         <div class="bottom">
-          <img src="../assets/qrcode.png" />
+          <img src="https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/qrcode.png" />
           <span>扫码生成</span>
           <span>拾光中南</span>
           <span>长按保存你的结果页</span>
@@ -79,12 +59,36 @@
 <script>
 import html2canvas from 'html2canvas'
 
+const momentsMap = [
+  '住在升华公寓',
+  '在校本部参加升旗仪式',
+  '在图书馆借一本书',
+  '穿过B、C座之间的廊桥',
+  '为CUBA“西南王”欢呼喝彩',
+  '在网红食堂“八食堂”干饭',
+  '为体测坚持晨练',
+  '打卡中南大学校门',
+  '驻足天鹅湖畔',
+  '踩着单车去上课',
+  '在情人坡上晒太阳',
+  '与火车头合影',
+  '参加一次新年音乐会',
+  '难忘的军训',
+  '寻访和平楼',
+  '谈一场校园恋爱',
+  '一起赏中南初雪',
+  '品尝中南限定月饼',
+  '难舍湘雅红楼',
+  '在中南，听讲座',
+  '毕业典礼，不说再见'
+]
+
 export default {
   name: 'Summary',
   data () {
     return {
-      campus: [2, 4, 5, 1],
-      moments: Array(21).fill(0).map((item, index) => index),
+      momentsMap,
+      spawned: false,
       scaleRate: 1
     }
   },
@@ -95,12 +99,15 @@ export default {
     })
 
     const content = document.getElementById('export')
-    const realHeight = content.offsetHeight
     const height = content.clientHeight
-    this.scaleRate = height / realHeight
     const width = content.clientWidth
     const canvas = document.createElement('canvas')
     const scale = 3
+
+    const container = document.getElementById('app')
+    const viewHeight = container.clientHeight
+    const viewWidth = container.clientWidth
+    this.scaleRate = Math.min(viewHeight / height * 0.95, viewWidth / width * 0.85)
 
     canvas.height = height * scale
     canvas.width = width * scale
@@ -144,46 +151,42 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('../assets/bg2.jpg');
-    background-position: center center;
-    background-size: cover;
 
     .content-box {
-      width: 90%;
-      background-image: url('../assets/summary-bg.jpg');
+      width: 22rem;
+      background-image: url('https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/summary-bg.jpg');
       background-position: top center;
       background-size: cover;
 
       .content {
-        width: 100%;
+        width: 22rem;
         background: linear-gradient(#bed3e6, transparent);
         box-sizing: border-box;
-        padding: 0 7vw;
+        padding: 0 35px;
         position: relative;
 
         .logo {
-          height: 8vh;
+          height: 3.5rem;
           display: flex;
           justify-content: center;
           align-items: center;
 
           img {
-            height: 5vh;
+            height: 2.2rem;
           }
         }
 
         .title {
-          height: 13vh;
+          height: 6rem;
           width: 90%;
           margin: {
-            top: 1vh;
-            bottom: 2.5vh;
+            top: .5rem;
+            bottom: 1rem;
           }
-          background-image: url('../assets/summary-title.png');
+          background-image: url('https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/summary-title.png');
           background-position: center center;
           background-size: contain;
           background-repeat: no-repeat;
-
         }
 
         .campus {
@@ -192,19 +195,20 @@ export default {
           position: relative;
 
           .avatar {
-            height: 4.5vh;
-            width: 4.5vh;
+            height: 1.8rem;
+            width: 1.8rem;
             border: 1px solid $font-color;
             margin: {
-              top: .5vh;
-              right: 1vh;
+              top: .5rem;
+              bottom: 1rem;
+              right: .3rem;
             }
           }
 
           .campus-text {
             display: flex;
             flex-direction: column;
-            width: calc(100% - 7vh);
+            width: calc(100% - 2.1rem);
             font-size: 12px;
 
             div {
@@ -235,22 +239,19 @@ export default {
           }
 
           .campus-img-box {
-            height: min-content;
-            width: 19.2vh;
+            height: 5.4rem;
+            width: 8.1rem;
             margin: {
-              top: 1vh;
+              top: 3px;
               left: auto;
+              right: 3px;
             }
             display: flex;
             flex-wrap: wrap;
-            // background-color: pink;
-            position: relative;
-            right: -1vh;
 
             .campus-img {
-              height: 6vh;
-              width: 6vh;
-              margin: .2vh;
+              height: 2.7rem;
+              width: 2.7rem;
             }
           }
         }
@@ -260,11 +261,9 @@ export default {
           width: 100%;
           display: flex;
           position: relative;
-          top: -10vh;
+          top: -3rem;
 
           .text {
-            width: calc(100% - 19vh);
-
             div {
               &:nth-child(1) {
                 span {
@@ -286,14 +285,12 @@ export default {
                   }
 
                   &:nth-child(2) {
-                    font-size: 1.3rem;
+                    font-size: 1.5rem;
                     color: $font-color;
                   }
                 }
 
                 .moments-box {
-                  margin-top: .5vh;
-
                   span {
                     display: block;
                     font-size: 12px;
@@ -308,15 +305,18 @@ export default {
 
           .moment-img-box {
             height: min-content;
-            width: 20vh;
+            width: 8.4rem;
             display: flex;
             flex-wrap: wrap;
-            margin-top: 12vh;
+            margin: {
+              top: 3.7rem;
+              left: auto;
+            }
 
             .moment-img {
-              height: 5.5vh;
-              width: 5.5vh;
-              margin: .5vh;
+              height: 2.4rem;
+              width: 2.4rem;
+              margin: .2rem;
               background-size: contain;
 
             }
@@ -324,7 +324,7 @@ export default {
         }
 
         .gate {
-          height: 20vh;
+          height: 9rem;
           position: relative;
 
           img {
@@ -335,7 +335,7 @@ export default {
         }
 
         .bottom {
-          height: 14vh;
+          height: 6.3rem;
           width: 100%;
           position: absolute;
           bottom: 0;
@@ -346,7 +346,7 @@ export default {
           align-items: center;
 
           img {
-            height: 5vh;
+            height: 2rem;
           }
 
           span {

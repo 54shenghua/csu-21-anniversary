@@ -4,7 +4,7 @@
     <div class="content-box">
       <span class="title">你好，中南人</span>
       <div class="avatar-box">
-        <img class="avatar-outer" src="../assets/avatar-outer.png" />
+        <img class="avatar-outer" src="https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/avatar-outer.png" />
         <img v-if="avatar !== ''" class="avatar" :src="avatar">
       </div>
       <div class="input-box">
@@ -30,7 +30,8 @@ export default {
         this.$toast.fail('请输入你的名字~')
         return
       }
-      localStorage.setItem('name', this.name)
+      // localStorage.setItem('name', this.name)
+      this.$store.username = this.name
       this.$router.replace({ name: 'date', params: { router: true } })
     }
   }
@@ -41,7 +42,7 @@ export default {
   @import '../styles/global.scss';
 
   .container {
-    background-image: url('../assets/bg2.jpg');
+    background-image: url('https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/bg2.jpg');
     background-position: center center;
     background-size: cover;
     position: relative;
@@ -53,7 +54,7 @@ export default {
       $logo-size: 15vh;
       height: $logo-size;
       width: $logo-size;
-      background-image: url('../assets/trans-logo.png');
+      background-image: url('https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/trans-logo.png');
       background-size: cover;
       position: absolute;
       top: 3%;
@@ -62,7 +63,7 @@ export default {
     .content-box {
       height: 75%;
       width: 80%;
-      background-image: url('../assets/content-box.png');
+      background-image: url('https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/content-box.png');
       background-position: center center;
       background-size: cover;
       margin-top: 15%;
@@ -83,7 +84,7 @@ export default {
         $avatar-box-size: 16vh;
         height: $avatar-box-size;
         width: $avatar-box-size;
-        background-image: url('../assets/avatar-inner.png');
+        background-image: url('https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/avatar-inner.png');
         background-position: center center;
         background-size: contain;
         display: flex;

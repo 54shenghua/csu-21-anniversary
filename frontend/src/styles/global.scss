@@ -8,7 +8,7 @@ $font-color: rgb(6,76,148);
 button {
   height: 3.5rem;
   width: 6.84rem;
-  background-image: url('../assets/button.png');
+  background-image: url('https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/button.png');
   background-size: cover;
   background-color: initial;
   border: none;
@@ -30,37 +30,37 @@ button {
 
 @font-face {
   font-family: title;
-  src: url('../assets/fonts/title.ttf');
+  src: url('../assets/title.ttf');
 }
 
 @font-face {
   font-family: subtitle;
-  src: url('../assets/fonts/subtitle.ttf');
+  src: url('../assets/subtitle.ttf');
 }
 
 @font-face {
   font-family: transition;
-  src: url('../assets/fonts/transition.ttf');
+  src: url('../assets/transition.ttf');
 }
 
 @font-face {
   font-family: fangzheng;
-  src: url('../assets/fonts/fangzheng.ttf');
+  src: url('../assets/fangzheng.ttf');
 }
 
 @font-face {
   font-family: moment;
-  src: url('../assets/fonts/moment.ttf');
+  src: url('../assets/moment.ttf');
 }
 
 @font-face {
   font-family: moment-bold;
-  src: url('../assets/fonts/moment-bold.ttf');
+  src: url('../assets/moment-bold.ttf');
 }
 
 @font-face {
   font-family: summary-bottom;
-  src: url('../assets/fonts/summary-bottom.ttf');
+  src: url('../assets/summary-bottom.ttf');
 }
 
 @keyframes fade-slide-down {
