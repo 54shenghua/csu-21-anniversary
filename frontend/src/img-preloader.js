@@ -7,6 +7,7 @@ const imgs = [
   'logo.png',
   'button.png',
   'bg2.jpg',
+  'tuanzi.png',
   'trans-logo.png',
   'avatar-outer.png',
   'blue-logo.png',
