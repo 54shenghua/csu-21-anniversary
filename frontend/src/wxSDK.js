@@ -9,6 +9,7 @@ const options = {
 }
 
 export function initWXJSSDK (url) {
+  alert(url)
   Axios.post('ticket/', {
     url
   }).then((res) => {
