@@ -24,14 +24,8 @@
 </template>
 
 <script>
-import { initWXJSSDK } from '../wxSDK'
-
 export default {
   name: 'Home',
-  mounted () {
-    console.log(encodeURIComponent(window.location.href.split('#')[0]))
-    initWXJSSDK(encodeURIComponent(window.location.href.split('#')[0]))
-  },
   methods: {
     start () {
       this.$router.replace({ name: 'transition', params: { router: true } })
