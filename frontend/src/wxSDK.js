@@ -12,7 +12,6 @@ export function initWXJSSDK (url) {
   Axios.post('ticket/', {
     url
   }).then((res) => {
-    alert(JSON.stringify(res.data.data))
     wx.config({
       debug: false,
       appId: 'wx2fdfc27744ffa252',
@@ -26,6 +25,10 @@ export function initWXJSSDK (url) {
       wx.updateAppMessageShareData(options)
 
       wx.updateTimelineShareData(options)
+    })
+
+    wx.error((res) => {
+      alert(JSON.stringify(res))
     })
   })
 }
