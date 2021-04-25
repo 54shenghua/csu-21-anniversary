@@ -21,7 +21,9 @@ export default {
     }
   },
   mounted () {
-    this.$refs.bgm.play()
+    document.addEventListener('WeixinJSBridgeReady', () => {
+      this.$refs.bgm.play()
+    })
 
     if (process.env.NODE_ENV === 'production') {
       const res = window.location.search.substr(1).match(/(^|&|\?)code=([^&]*)(&|$)/)
