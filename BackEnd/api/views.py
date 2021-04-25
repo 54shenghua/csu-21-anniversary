@@ -71,54 +71,7 @@ def test(request):
     return JsonResponse({'msg': 'ok'})
 
 
-# def click(request):
-#     this_event_name = None
-#     this_campus_name = None
-#     if request.method == 'POST':
-#         if request.META.get('HTTP_OPENID') is None:
-#             return HttpResponse('请求出错')
-#         received_json_data = json.loads(request.body)
-#         openid = received_json_data['openid']
-#         name = received_json_data['name']
-#         time = received_json_data['time']
-#         campus = received_json_data['campus']
-#         moment = received_json_data['moment']
-#         users = User.objects.filter(openid=openid)
-#         if not users:
-#             return HttpResponse('用户不存在')
-#         else:
-#             for i in range(0, 6):
-#                 if campus[i] == 1:
-#                     this_campus = Campus.objects.get(campusID=(i + 1))
-#                     this_campus_name = this_campus.campusName
-#                     this_campus.click = this_campus.click + 1
-#                     this_campus.save()
-#                     break
-#             for i in range(0, 21):
-#                 if moment[i] == 1:
-#                     this_event = Event.objects.get(eventID=(i + 1))
-#                     this_event_name = this_event.eventName
-#                     this_event.click = this_event.click + 1
-#                     this_event.save()
-#                     break
-#             user = users.first()
-#             records = Record.objects.filter(openID=user)
-#             if not records:
-#                 record = Record.objects.create(openID=user, userName=name, data=time, campus=this_campus_name,
-#                                                event=this_event_name)
-#                 record.save()
-#             else:
-#                 record = records.first()
-#                 record.campus = this_campus_name
-#                 record.event = this_event_name
-#                 record.data = time
-#                 record.userName = name
-#                 record.save()
-#             return JsonResponse({'msg': 'ok'})
-
 def click(request):
-    this_event_name = None
-    this_campus_name = None
     if request.method == 'POST':
         received_json_data = json.loads(request.body)
         openid = received_json_data['openid']
@@ -126,9 +79,8 @@ def click(request):
         time = received_json_data['time']
         campus = received_json_data['campus']
         moment = received_json_data['moment']
-        users = User.objects.filter(openid=openid)
-        if not users:
-            return HttpResponse('用户不存在')
+        if not User.objects.filter(openid=openid):
+            return JsonResponse({'msg': 'failed'})
         else:
             campus_str = ''
             for i in range(len(campus)):
@@ -136,7 +88,6 @@ def click(request):
                 campus_data.click += 1
                 campus_data.save()
                 campus_str += str(campus[i]).zfill(2)
-            print(campus_str)
 
             moment_str = ''
             for i in range(len(moment)):
@@ -144,19 +95,7 @@ def click(request):
                 moment_data.click += 1
                 moment_data.save()
                 moment_str += str(moment[i]).zfill(2)
-            print(moment_str)
-            
-            # user = users.first()
-            # records = Record.objects.filter(openID=user)
-            # if not records:
-            #     record = Record.objects.create(openID=user, userName=name, data=time, campus=this_campus_name,
-            #                                    event=this_event_name)
-            #     record.save()
-            # else:
-            #     record = records.first()
-            #     record.campus = this_campus_name
-            #     record.event = this_event_name
-            #     record.data = time
-            #     record.userName = name
-            #     record.save()
+
+            record = Record.objects.create(openID=openid, userName=name, data=time, campus=campus_str, event=moment_str)
+            record.save()
             return JsonResponse({'msg': 'ok'})
