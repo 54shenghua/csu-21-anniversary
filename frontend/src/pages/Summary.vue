@@ -115,6 +115,7 @@ export default {
   },
   mounted () {
     this.$api.count()
+    alert(this.$store.openid)
 
     this.$store.campus.forEach((item) => {
       this.campus += (campusMap[item] + '、')
@@ -140,7 +141,7 @@ export default {
       const real = document.getElementById('export')
       const realHeight = real.clientHeight
       const realWidth = real.clientWidth
-      this.scaleRate = Math.min(viewHeight / realHeight, realWidth / viewWidth) * 0.9
+      this.scaleRate = Math.min(viewHeight / realHeight, realWidth / viewWidth) * 0.95
 
       canvas.height = height * scale
       canvas.width = width * scale
