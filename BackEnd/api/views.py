@@ -119,6 +119,9 @@ def get_ticket(request):
             string1 = 'jsapi_ticket=' + jsapi_ticket + '&noncestr=' + var + '&timestamp=' + str(
                 now_time) + '&url=' + url
             signature = hashlib.sha1(string1.encode('utf-8')).hexdigest()
+            print(now_time)
+            print(url)
+            print(jsapi_ticket)
             return JsonResponse(
                 {'data': {'noncestr': var, 'timestamp': str(now_time), 'signature': signature},
                  'msg': '', 'status': 200})
@@ -151,6 +154,9 @@ def get_ticket(request):
                 string1 = 'jsapi_ticket=' + jsapi_ticket + '&noncestr=' + var + '&timestamp=' + str(
                     now_time) + '&url=' + url
                 signature = hashlib.sha1(string1.encode('utf-8')).hexdigest()
+                print(now_time)
+                print(url)
+                print(jsapi_ticket)
                 return JsonResponse(
                     {'data': {'noncestr': var, 'timestamp': str(now_time), 'signature': signature},
                      'msg': '', 'status': 200})
