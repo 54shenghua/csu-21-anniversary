@@ -202,7 +202,7 @@ export default {
 
       .content {
         width: 22rem;
-        background: linear-gradient(#bed3e6, transparent);
+        background: linear-gradient(#bed3e6, rgb(230,230,230));
         box-sizing: border-box;
         padding: 0 35px;
         position: relative;
