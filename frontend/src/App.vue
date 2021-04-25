@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <transition :name="`${['forbidden', 'loading', 'home'].includes($route.name) ? '' : 'fade'}`">
+    <transition :name="`${['forbidden', 'loading', 'home'].includes($route.name) ? '' : 'slide'}`">
       <router-view />
     </transition>
   </div>
@@ -55,7 +55,7 @@ export default {
   }
 
   .fade-enter-active {
-    transition: opacity .8s .7s;
+    transition: opacity .8s;
   }
 
   .fade-leave-active {
@@ -64,6 +64,22 @@ export default {
 
   .fade-enter, .fade-leave-to {
     opacity: 0;
+  }
+
+  .slide-enter-active {
+    transition: opacity .8s .7s;
+  }
+
+  .slide-leave-active {
+    transition: transform .8s;
+  }
+
+  .slide-enter {
+    opacity: 0;
+  }
+
+  .slide-leave-to {
+    transform: translateY(-100%);
   }
 
   .container {
