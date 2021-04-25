@@ -16,7 +16,7 @@ export function login (code) {
 export function count () {
   return Axios.post('click/', {
     openid: store.openid,
-    name: store.name,
+    name: store.username,
     time: store.time.format('YYYY-MM-DD'),
     campus: store.campus,
     moment: store.moments
