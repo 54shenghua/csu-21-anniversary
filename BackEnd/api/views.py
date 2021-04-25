@@ -156,6 +156,7 @@ def get_ticket(request):
                 print(now_time)
                 print(url)
                 print(jsapi_ticket)
+                print(access_token)
                 return JsonResponse(
                     {'data': {'noncestr': var, 'timestamp': str(now_time), 'signature': signature},
                      'msg': '', 'status': 200})
