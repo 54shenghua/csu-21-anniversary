@@ -118,7 +118,7 @@ def get_ticket(request):
             jsapi_ticket = jsapi_ticket
             string1 = 'jsapi_ticket=' + jsapi_ticket + '&noncestr=' + var + '&timestamp=' + str(
                 now_time) + '&url=' + url
-            signature = hashlib.sha1(string1.encode('utf-8')).hexdigest()
+            signature = hashlib.sha1(string1.encode('unicode')).hexdigest()
             return JsonResponse(
                 {'data': {'noncestr': 'Wm3WZYTPz0wzccnW', 'timestamp': '1414587457', 'signature': signature},
                  'msg': '', 'status': 200})
@@ -150,7 +150,7 @@ def get_ticket(request):
                 jsapi_ticket = tokenInfo2['jsapi_ticket']
                 string1 = 'jsapi_ticket=' + jsapi_ticket + '&noncestr=' + var + '&timestamp=' + str(
                     now_time) + '&url=' + url
-                signature = hashlib.sha1(string1.encode('utf-8')).hexdigest()
+                signature = hashlib.sha1(string1.encode('unicode')).hexdigest()
                 return JsonResponse(
                     {'data': {'noncestr': 'Wm3WZYTPz0wzccnW', 'timestamp': '1414587457', 'signature': signature},
                      'msg': '', 'status': 200})
