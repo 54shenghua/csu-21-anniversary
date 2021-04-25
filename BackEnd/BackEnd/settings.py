@@ -108,8 +108,8 @@ DATABASES = {
         'HOST': 'localhost',
         'POST': '3306',
         'NAME': 'anniversary',
-        'USER': 'anniversary',
-        'PASSWORD': '123456',
+        'USER': 'root',
+        'PASSWORD': '54SHer@54sher',
         'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'", },
     }
 }
