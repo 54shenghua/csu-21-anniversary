@@ -2,7 +2,7 @@ import hashlib
 import json
 import time
 import uuid
-from random import random
+import urllib.parse
 
 import requests
 from django.http import JsonResponse, HttpResponse
@@ -112,7 +112,7 @@ def get_ticket(request):
     if request.method == 'POST':
         var = uuid.uuid4().hex[0:10]
         received_json_data = json.loads(request.body)
-        url = received_json_data['url']
+        url = urllib.parse.unquote(received_json_data['url'])
         if now_time - time.time() < 3600:
             now_time = int(time.time())
             jsapi_ticket = jsapi_ticket
