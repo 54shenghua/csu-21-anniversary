@@ -1,6 +1,7 @@
 <template>
-  <div class="container" :style="`transform: scale(${scaleRate}); visibility: ${spawned ? 'visible' : 'none'}`">
-    <div id="export" class="content-box">
+  <div class="container">
+    <!-- <img class="bg" src="../assets/bg2.jpg"> -->
+    <div id="export" class="content-box" :style="`transform: scale(${scaleRate}); visibility: ${spawned ? 'visible' : 'none'}`">
       <div class="content">
         <div class="logo">
           <img src="../assets/blue-logo.png"/>
@@ -52,6 +53,10 @@
           <span>长按保存你的结果页</span>
         </div>
       </div>
+    </div>
+    <div class="copyright">
+      <span>中南小团子青年传媒中心 出品</span>
+      <span>升华工作室 提供技术支持</span>
     </div>
   </div>
 </template>
@@ -124,13 +129,16 @@ export default {
       const container = document.getElementById('app')
       const viewHeight = container.clientHeight
       const viewWidth = container.clientWidth
-      this.scaleRate = Math.min(viewHeight / height * 0.95, viewWidth / width * 0.85)
+
+      const real = document.getElementById('export')
+      const realHeight = real.clientHeight
+      const realWidth = real.clientWidth
+      this.scaleRate = Math.min(viewHeight / realHeight, realWidth / viewWidth) * 0.9
 
       canvas.height = height * scale
       canvas.width = width * scale
       canvas.style.height = `${height * scale}px`
       canvas.style.width = `${width * scale}px`
-      // canvas.getContext('2d').scale(scale, scale)
 
       const options = {
         scale,
@@ -147,7 +155,6 @@ export default {
           const exportImg = document.createElement('img')
           exportImg.src = img
           exportImg.style.position = 'absolute'
-          exportImg.style.top = 0
           exportImg.style.left = 0
           exportImg.style.width = '100%'
           exportImg.style.opacity = 0
@@ -169,12 +176,22 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+
+    .bg {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
 
     .content-box {
       width: 22rem;
       background-image: url('../assets/summary-bg.jpg');
       background-position: top center;
       background-size: cover;
+      margin-bottom: 1rem;
 
       .content {
         width: 22rem;
@@ -205,6 +222,8 @@ export default {
           background-position: center center;
           background-size: contain;
           background-repeat: no-repeat;
+          position: relative;
+          left: -.6rem;
         }
 
         .campus {
@@ -385,8 +404,23 @@ export default {
               border-left: 1px solid rgb(154,70,73);
               transform: scale(.8);
             }
+
+            &:nth-child(5) {
+              font-size: 12px;
+              transform: scale(.8);
+            }
           }
         }
+      }
+    }
+
+    .copyright {
+      position: absolute;
+      bottom: 0;
+
+      span {
+        display: block;
+        font-family: subtitle;
       }
     }
   }
