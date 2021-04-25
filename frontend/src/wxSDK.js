@@ -9,9 +9,9 @@ const options = {
 }
 
 export function initWXJSSDK (url) {
-  alert(url)
+  // alert(url)
   Axios.post('ticket/', {
-    url
+    url: 'https://csu21.54sher.com'
   }).then((res) => {
     wx.config({
       debug: false,
