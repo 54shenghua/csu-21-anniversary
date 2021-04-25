@@ -115,7 +115,6 @@ export default {
   },
   mounted () {
     this.$api.count()
-    alert(this.$store.openid)
 
     this.$store.campus.forEach((item) => {
       this.campus += (campusMap[item] + '、')
