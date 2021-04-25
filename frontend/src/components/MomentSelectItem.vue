@@ -1,6 +1,6 @@
 <template>
-  <div class="select-item-container" @click="clickHdl">
-    <img :src="`https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/moments/${index}.jpg`" :style="`opacity:${active ? 1 : 0.5};`" />
+  <div class="select-item-container" :style="`width: ${special ? '140px' : '50%'}`" @click="clickHdl">
+    <img :src="`https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/moments/${index}.jpg`" :style="`width: ${special ? '65%' : '80%'};opacity:${active ? 1 : 0.5};`" />
     <div class="text-box">
       <div class="text" :style="`background-color:rgb(${active ? '6,76,148' : '237,237,237'});`">
         <span :style="`color:${active ? 'white' : 'rgb(6,76,148)'}`">{{text}}</span>
@@ -29,6 +29,10 @@ export default {
     onClick: {
       type: Function,
       default: () => console.log('clicked')
+    },
+    special: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
@@ -44,7 +48,6 @@ export default {
   @import '../styles/global.scss';
 
   .select-item-container {
-    width: 50%;
     box-sizing: border-box;
     display: flex;
     // justify-content: center;
@@ -58,7 +61,6 @@ export default {
     }
 
     img {
-      width: 80%;
       transition: opacity .5s;
       margin-bottom: 1vh;
     }

@@ -30,7 +30,7 @@
             <select-item index="17" text="品尝中南限定月饼" :onClick="clickHdl" />
             <select-item index="18" text="难舍湘雅红楼" :onClick="clickHdl" />
             <select-item index="19" text="在中南，听讲座" :onClick="clickHdl" />
-            <select-item index="20" text="毕业典礼，不说再见" :onClick="clickHdl" />
+            <select-item index="20" text="毕业典礼，不说再见" :onClick="clickHdl" special />
           </div>
           <div class="button-box">
             <button @click="submit">下一步</button>
