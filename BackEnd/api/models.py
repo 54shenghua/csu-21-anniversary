@@ -8,7 +8,7 @@ UNKNOWN = 0
 # Create your models here.
 class User(models.Model):
     openid = models.CharField(null=True, max_length=255, unique=True)
-    avatar = models.ImageField(null=True, upload_to='icon')
+    avatar = models.CharField(null=True, max_length=255)
     sex = models.IntegerField(default=UNKNOWN)
     province = models.CharField(null=True, max_length=64)
     city = models.CharField(null=True, max_length=64)
