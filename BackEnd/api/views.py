@@ -120,7 +120,7 @@ def get_ticket(request):
                 now_time) + '&url=' + url
             signature = hashlib.sha1(string1.encode('utf-8')).hexdigest()
             return JsonResponse(
-                {'data': {'noncestr': 'Wm3WZYTPz0wzccnW', 'timestamp': '1414587457', 'signature': signature},
+                {'data': {'noncestr': var, 'timestamp': str(now_time), 'signature': signature},
                  'msg': '', 'status': 200})
         now_time = int(time.time())
         first_url = 'https://api.weixin.qq.com/cgi-bin/token'
@@ -152,5 +152,5 @@ def get_ticket(request):
                     now_time) + '&url=' + url
                 signature = hashlib.sha1(string1.encode('utf-8')).hexdigest()
                 return JsonResponse(
-                    {'data': {'noncestr': 'Wm3WZYTPz0wzccnW', 'timestamp': '1414587457', 'signature': signature},
+                    {'data': {'noncestr': var, 'timestamp': str(now_time), 'signature': signature},
                      'msg': '', 'status': 200})
