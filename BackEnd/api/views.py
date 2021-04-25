@@ -79,7 +79,8 @@ def click(request):
         time = received_json_data['time']
         campus = received_json_data['campus']
         moment = received_json_data['moment']
-        if not User.objects.filter(openid=openid):
+        users = User.objects.filter(openid=openid)
+        if not users:
             return JsonResponse({'msg': 'failed'})
         else:
             campus_str = ''
@@ -95,7 +96,8 @@ def click(request):
                 moment_data.click += 1
                 moment_data.save()
                 moment_str += str(moment[i]).zfill(2)
-
-            record = Record.objects.create(openID=openid, userName=name, data=time, campus=campus_str, event=moment_str)
+            
+            user = users.first()
+            record = Record.objects.create(openID=user, userName=name, data=time, campus=campus_str, event=moment_str)
             record.save()
             return JsonResponse({'msg': 'ok'})
