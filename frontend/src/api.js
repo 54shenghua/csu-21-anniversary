@@ -1,15 +1,15 @@
-// import Axios from './config/axios'
+import { Axios } from './config/axios'
 
 export function login (code) {
-  // return Axios.post('/login', { code })
-  return Promise.resolve({
-    data: {
-      openid: 'xxx',
-      avatar: 'xxx',
-      msg: '',
-      status: true
-    }
-  })
+  return Axios.post('login/', { code })
+  // return Promise.resolve({
+  //   data: {
+  //     openid: 'xxx',
+  //     avatar: 'xxx',
+  //     msg: '',
+  //     status: true
+  //   }
+  // })
 }
 
 export function count () {
