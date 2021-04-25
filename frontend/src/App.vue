@@ -12,7 +12,6 @@
 
 <script>
 import { login } from './api'
-import { initWXJSSDK } from './wxSDK'
 
 export default {
   name: 'App',
@@ -32,8 +31,6 @@ export default {
         window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2fdfc27744ffa252&redirect_uri=https%3A%2F%2Fcsu21.54sher.com&response_type=code&scope=snsapi_userinfo#wechat_redirect'
       } else {
         this.$router.replace({ name: 'home', params: { router: true } })
-        console.log(encodeURIComponent(window.location.href.split('#')[0]))
-        initWXJSSDK(encodeURIComponent(window.location.href.split('#')[0]))
         login(code)
           .then((res) => {
             this.$store.openid = res.data.data.openid
