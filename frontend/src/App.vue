@@ -3,6 +3,10 @@
     <transition :name="`${['forbidden', 'loading', 'home'].includes($route.name) ? '' : 'slide'}`">
       <router-view />
     </transition>
+    <div :class="['bgm', bgmActive ? 'bgm-active' : '']" @click="bgmHdl" />
+    <audio ref="bgm" loop autoplay preload="auto">
+      <source src="https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/bgm.mp3">
+    </audio>
   </div>
 </template>
 
@@ -12,6 +16,11 @@ import { initWXJSSDK } from './wxSDK'
 
 export default {
   name: 'App',
+  data () {
+    return {
+      bgmActive: true
+    }
+  },
   mounted () {
     if (process.env.NODE_ENV === 'production') {
       initWXJSSDK(window.location.href.split('#')[0])
@@ -33,6 +42,16 @@ export default {
           .catch(() => {})
       }
     }
+  },
+  methods: {
+    bgmHdl () {
+      this.bgmActive = !this.bgmActive
+      if (this.bgmActive) {
+        this.$refs.bgm.play()
+      } else {
+        this.$refs.bgm.pause()
+      }
+    }
   }
 }
 </script>
@@ -48,6 +67,32 @@ export default {
     background-image: url('https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/bg2.jpg');
     background-position: center center;
     background-size: cover;
+
+    .bgm {
+      height: 2rem;
+      width: 2rem;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 999;
+      background-image: url('https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/bgm.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+
+  .bgm-active {
+    animation: rotate 2s linear infinite;
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
   }
 
   .fade-enter-active {

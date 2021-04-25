@@ -15,7 +15,8 @@ const imgs = [
   'click.png',
   // 'summary-bg.jpg',
   'white-bg.png',
-  'qrcode.png'
+  'qrcode.png',
+  'bgm.png'
 ]
 
 // for (let i = 0; i < 21; ++i) {
