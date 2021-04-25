@@ -23,6 +23,7 @@ export default {
   },
   mounted () {
     if (process.env.NODE_ENV === 'production') {
+      console.log(encodeURIComponent(window.location.href.split('#')[0]))
       initWXJSSDK(encodeURIComponent(window.location.href.split('#')[0]))
 
       const res = window.location.search.substr(1).match(/(^|&|\?)code=([^&]*)(&|$)/)
