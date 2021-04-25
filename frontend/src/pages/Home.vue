@@ -17,6 +17,7 @@
       <div class="circle second-circle" />
     </div>
     <div class="copyright">
+      <span>中南小团子青年传媒中心 出品</span>
       <span>升华工作室 提供技术支持</span>
     </div>
   </div>
@@ -150,22 +151,6 @@ export default {
         width: 1.5rem;
         animation-delay: .5s;
       }
-    }
-
-    .copyright {
-      width: 100%;
-      position: absolute;
-      bottom: 5px;
-      text-align: center;
-      font-family: subtitle;
-      font-size: 12px;
-      letter-spacing: 2px;
-      color: white;
-      transform: scale(.8);
-      opacity: 0;
-      animation: fade .5s 1.3s;
-      animation-fill-mode: forwards;
-      -webkit-animation-fill-mode: forwards;
     }
   }
 
