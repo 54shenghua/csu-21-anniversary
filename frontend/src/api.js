@@ -1,4 +1,5 @@
 import { Axios } from './config/axios'
+import store from './store'
 
 export function login (code) {
   return Axios.post('login/', { code })
@@ -13,11 +14,11 @@ export function login (code) {
 }
 
 export function count () {
-  // return Axios.post('/count', {
-  //   openid: localStorage.getItem('openid'),
-  //   name: localStorage.getItem('name'),
-  //   time: localStorage.getItem('time'),
-  //   campus: localStorage.getItem('campus'),
-  //   moment: localStorage.getItem('moment')
-  // })
+  return Axios.post('click/', {
+    openid: store.openid,
+    name: store.name,
+    time: store.time.format('YYYY-MM-DD'),
+    campus: store.campus,
+    moment: store.moments
+  })
 }

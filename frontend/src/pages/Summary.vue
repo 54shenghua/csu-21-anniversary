@@ -109,8 +109,13 @@ export default {
       campus: ''
     }
   },
-  mounted () {
+  created () {
     this.$store.campus.sort()
+    this.$store.moment.sort()
+  },
+  mounted () {
+    this.$api.count()
+
     this.$store.campus.forEach((item) => {
       this.campus += (campusMap[item] + '、')
     })
