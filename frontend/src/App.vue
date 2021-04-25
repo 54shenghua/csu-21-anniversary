@@ -21,6 +21,10 @@ export default {
     }
   },
   mounted () {
+    if (window.performance.navigation.type !== 1) {
+      this.$router.replace({ name: 'loading' })
+    }
+
     document.addEventListener('WeixinJSBridgeReady', () => {
       this.$refs.bgm.play()
     })
