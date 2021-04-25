@@ -113,7 +113,7 @@ def get_ticket(request):
         var = uuid.uuid4().hex[0:10]
         received_json_data = json.loads(request.body)
         url = urllib.parse.unquote(received_json_data['url'])
-        if now_time - time.time() < 3600:
+        if time.time() - now_time < 3600:
             now_time = int(time.time())
             jsapi_ticket = jsapi_ticket
             string1 = 'jsapi_ticket=' + jsapi_ticket + '&noncestr=' + var + '&timestamp=' + str(
