@@ -24,14 +24,16 @@ export default {
         this.$router.replace({ name: 'home', params: { router: true } })
         login(code)
           .then((res) => {
-            // localStorage.setItem('openid', res.data.data.wx_openid)
+            this.$store.openid = res.data.data.openid
+            this.$store.avatar = res.data.data.avatar
           })
           .catch(() => {})
       }
     } else {
       login('')
         .then((res) => {
-          // localStorage.setItem('openid', res.data.data.wx_openid)
+          this.$store.openid = res.data.data.openid
+          this.$store.avatar = res.data.data.avatar
         })
         .catch(() => {})
     }

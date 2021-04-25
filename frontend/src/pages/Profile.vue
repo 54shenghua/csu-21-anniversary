@@ -5,7 +5,7 @@
       <span class="title">你好，中南人</span>
       <div class="avatar-box">
         <img class="avatar-outer" src="https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/avatar-outer.png" />
-        <img v-if="avatar !== ''" class="avatar" :src="avatar">
+        <img v-if="$store.avatar !== ''" class="avatar" :src="$store.avatar">
       </div>
       <div class="input-box">
         <input class="input" v-model="name" placeholder="请输入你的名字" />
@@ -20,8 +20,7 @@ export default {
   name: 'Profile',
   data () {
     return {
-      name: '',
-      avatar: ''
+      name: ''
     }
   },
   methods: {
@@ -30,7 +29,6 @@ export default {
         this.$toast.fail('请输入你的名字~')
         return
       }
-      // localStorage.setItem('name', this.name)
       this.$store.username = this.name
       this.$router.replace({ name: 'date', params: { router: true } })
     }
