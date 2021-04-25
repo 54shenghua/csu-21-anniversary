@@ -5,7 +5,8 @@
       <span class="title">你好，中南人</span>
       <div class="avatar-box">
         <img class="avatar-outer" src="https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/avatar-outer.png" />
-        <img v-if="$store.avatar !== ''" class="avatar" :src="$store.avatar">
+        <!-- <img v-if="$store.avatar !== ''" class="avatar" :src="$store.avatar"> -->
+        <img class="avatar" src="../assets/bg2.jpg">
       </div>
       <div class="input-box">
         <input class="input" v-model="name" placeholder="请输入你的名字" />
@@ -85,6 +86,7 @@ export default {
         background-image: url('https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/avatar-inner.png');
         background-position: center center;
         background-size: contain;
+        background-repeat: no-repeat;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -103,8 +105,8 @@ export default {
           width: $avatar-size;
           border-radius: 50%;
           position: absolute;
-          top: 3.5%;
-          left: 7%;
+          top: 1.2vh;
+          left: 1.1vh;
           z-index: 0;
         }
       }
