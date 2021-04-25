@@ -12,7 +12,7 @@ export function initWXJSSDK (url) {
   Axios.post('ticket/', {
     url
   }).then((res) => {
-    alert(res.data.data)
+    alert(JSON.stringify(res.data.data))
     wx.config({
       debug: false,
       appId: 'wx2fdfc27744ffa252',
