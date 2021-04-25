@@ -22,9 +22,9 @@
             <select-item index="9" text="踩着单车去上课" :onClick="clickHdl" />
             <select-item index="10" text="在情人坡上晒太阳" :onClick="clickHdl" />
             <select-item index="11" text="与火车头合影" :onClick="clickHdl" />
-            <select-item index="12" text="参加一次新年音乐会" :onClick="clickHdl" />
+            <select-item index="12" text="听一场新年音乐会" :onClick="clickHdl" />
             <select-item index="13" text="难忘的军训" :onClick="clickHdl" />
-            <select-item index="14" text="寻访和平楼" :onClick="clickHdl" />
+            <select-item index="14" text="寻访民主楼与和平楼" :onClick="clickHdl" />
             <select-item index="15" text="谈一场校园恋爱" :onClick="clickHdl" />
             <select-item index="16" text="一起赏中南初雪" :onClick="clickHdl" />
             <select-item index="17" text="品尝中南限定月饼" :onClick="clickHdl" />
