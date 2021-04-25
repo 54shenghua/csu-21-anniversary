@@ -130,10 +130,22 @@ def click(request):
         if not users:
             return HttpResponse('用户不存在')
         else:
+            campus_str = ''
             for i in range(len(campus)):
-                print(campus[i])
+                campus_data = Campus.objects.get(campusID = campus[i])
+                campus_data.click += 1
+                campus_data.save()
+                campus_str += str(campus[i]).zfill(2)
+            print(campus_str)
+
+            moment_str = ''
             for i in range(len(moment)):
-                print(campus[i])
+                moment_data = Event.objects.get(eventID = moment[i])
+                moment_data.click += 1
+                moment_data.save()
+                moment_str += str(moment[i]).zfill(2)
+            print(moment_str)
+            
             # user = users.first()
             # records = Record.objects.filter(openID=user)
             # if not records:
