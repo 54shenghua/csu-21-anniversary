@@ -24,7 +24,6 @@ export default {
         this.$router.replace({ name: 'home', params: { router: true } })
         login(code)
           .then((res) => {
-            alert(res.data)
             this.$store.openid = res.data.data.openid
             this.$store.avatar = res.data.data.avatar
           })

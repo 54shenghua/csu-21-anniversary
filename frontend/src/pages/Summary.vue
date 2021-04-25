@@ -111,7 +111,7 @@ export default {
   },
   created () {
     this.$store.campus.sort()
-    this.$store.moment.sort()
+    this.$store.moments.sort()
   },
   mounted () {
     this.$api.count()
