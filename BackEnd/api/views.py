@@ -1,6 +1,8 @@
 import hashlib
 import json
 import time
+import uuid
+from random import random
 
 import requests
 from django.http import JsonResponse, HttpResponse
@@ -108,17 +110,19 @@ def get_ticket(request):
     global jsapi_ticket
     global now_time
     if request.method == 'POST':
+        var = uuid.uuid4().hex[0:10]
         received_json_data = json.loads(request.body)
         url = received_json_data['url']
         if now_time - time.time() < 3600:
-            now_time = time.time()
+            now_time = int(time.time())
             jsapi_ticket = jsapi_ticket
-            string1 = 'jsapi_ticket=' + jsapi_ticket + '&noncestr=Wm3WZYTPz0wzccnW&timestamp=1414587457&url=' + url
+            string1 = 'jsapi_ticket=' + jsapi_ticket + '&noncestr=' + var + '&timestamp=' + str(
+                now_time) + '&url=' + url
             signature = hashlib.sha1(string1).hexdigest()
             return JsonResponse(
                 {'data': {'noncestr': 'Wm3WZYTPz0wzccnW', 'timestamp': '1414587457', 'signature': signature},
                  'msg': '', 'status': 200})
-        now_time = time.time()
+        now_time = int(time.time())
         first_url = 'https://api.weixin.qq.com/cgi-bin/token'
         params = {
             'grant_type': 'client_credential',
@@ -143,9 +147,9 @@ def get_ticket(request):
             if 'ticket' not in tokenInfo2:
                 return HttpResponse(str(tokenInfo2["errcode"]) + ' ' + tokenInfo2["errmsg"])
             else:
-                global jsapi_ticket
                 jsapi_ticket = tokenInfo2['jsapi_ticket']
-                string1 = 'jsapi_ticket=' + jsapi_ticket + '&noncestr=Wm3WZYTPz0wzccnW&timestamp=1414587457&url=' + url
+                string1 = 'jsapi_ticket=' + jsapi_ticket + '&noncestr=' + var + '&timestamp=' + str(
+                    now_time) + '&url=' + url
                 signature = hashlib.sha1(string1).hexdigest()
                 return JsonResponse(
                     {'data': {'noncestr': 'Wm3WZYTPz0wzccnW', 'timestamp': '1414587457', 'signature': signature},
