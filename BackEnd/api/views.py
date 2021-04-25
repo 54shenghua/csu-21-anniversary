@@ -113,17 +113,15 @@ def get_ticket(request):
         var = uuid.uuid4().hex[0:10]
         received_json_data = json.loads(request.body)
         url = urllib.parse.unquote(received_json_data['url'])
-        # if now_time - time.time() < 3600:
-        #     now_time = int(time.time())
-        #     jsapi_ticket = jsapi_ticket
-        #     string1 = 'jsapi_ticket=' + jsapi_ticket + '&noncestr=' + var + '&timestamp=' + str(
-        #         now_time) + '&url=' + url
-        #     signature = hashlib.sha1(string1.encode('utf-8')).hexdigest()
-        #     print(url)
-        #     print(jsapi_ticket)
-        #     return JsonResponse(
-        #         {'data': {'noncestr': var, 'timestamp': str(now_time), 'signature': signature},
-        #          'msg': '', 'status': 200})
+        if now_time - time.time() < 3600:
+            now_time = int(time.time())
+            jsapi_ticket = jsapi_ticket
+            string1 = 'jsapi_ticket=' + jsapi_ticket + '&noncestr=' + var + '&timestamp=' + str(
+                now_time) + '&url=' + url
+            signature = hashlib.sha1(string1.encode('utf-8')).hexdigest()
+            return JsonResponse(
+                {'data': {'noncestr': var, 'timestamp': str(now_time), 'signature': signature},
+                 'msg': '', 'status': 200})
         now_time = int(time.time())
         first_url = 'https://api.weixin.qq.com/cgi-bin/token'
         params = {
@@ -146,7 +144,6 @@ def get_ticket(request):
             response2 = requests.get(url=next_url, params=params2)
             json_str2 = response2.content.decode()
             tokenInfo2 = json.loads(json_str2, strict=False)
-            print(tokenInfo2['ticket'])
             if 'ticket' not in tokenInfo2:
                 return HttpResponse(str(tokenInfo2["errcode"]) + ' ' + tokenInfo2["errmsg"])
             else:
@@ -154,8 +151,6 @@ def get_ticket(request):
                 string1 = 'jsapi_ticket=' + jsapi_ticket + '&noncestr=' + var + '&timestamp=' + str(
                     now_time) + '&url=' + url
                 signature = hashlib.sha1(string1.encode('utf-8')).hexdigest()
-                print(url)
-                print(jsapi_ticket)
                 return JsonResponse(
                     {'data': {'noncestr': var, 'timestamp': str(now_time), 'signature': signature},
                      'msg': '', 'status': 200})
