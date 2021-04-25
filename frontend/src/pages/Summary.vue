@@ -8,7 +8,9 @@
         </div>
         <div class="title" />
         <div class="campus">
-          <div class="avatar" />
+          <div class="avatar">
+            <img :src="$store.avatar">
+          </div>
           <div class="campus-text">
             <div>
               <span>{{$store.username}}</span>
@@ -239,6 +241,11 @@ export default {
               top: .5rem;
               bottom: 1rem;
               right: .3rem;
+            }
+
+            img {
+              height: 100%;
+              width: 100%;
             }
           }
 
