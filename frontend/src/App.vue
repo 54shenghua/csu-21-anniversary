@@ -8,11 +8,14 @@
 
 <script>
 import { login } from './api'
+import { initWXJSSDK } from './wxSDK'
 
 export default {
   name: 'App',
   mounted () {
     if (process.env.NODE_ENV === 'production') {
+      initWXJSSDK(window.location.href.split('#')[0])
+
       const res = window.location.search.substr(1).match(/(^|&|\?)code=([^&]*)(&|$)/)
       let code = ''
       if (res) {
@@ -29,13 +32,6 @@ export default {
           })
           .catch(() => {})
       }
-    } else {
-      login('')
-        .then((res) => {
-          this.$store.openid = res.data.data.openid
-          this.$store.avatar = res.data.data.avatar
-        })
-        .catch(() => {})
     }
   }
 }
