@@ -17,7 +17,7 @@
             </div>
             <div>
               <span>你去过 </span>
-              <span>{{'校本部、新校区、南校区、铁道校区、湘雅校区、湘雅新校区'}}</span>
+              <span>{{campus}}</span>
             </div>
             <div class="campus-img-box">
               <img class="campus-img" v-for="item in $store.campus" :key="item" :src="require(`../assets/summary/campus/${item}.png`)" />
@@ -59,6 +59,15 @@
 <script>
 import html2canvas from 'html2canvas'
 
+const campusMap = [
+  '校本部',
+  '新校区',
+  '南校区',
+  '铁道校区',
+  '湘雅校区',
+  '湘雅新校区'
+]
+
 const momentsMap = [
   '住在升华公寓',
   '在校本部参加升旗仪式',
@@ -89,57 +98,66 @@ export default {
     return {
       momentsMap,
       spawned: false,
-      scaleRate: 1
+      scaleRate: 1,
+      campus: ''
     }
   },
   mounted () {
+    this.$store.campus.sort()
+    this.$store.campus.forEach((item) => {
+      this.campus += (campusMap[item] + '、')
+    })
+    this.campus = this.campus.slice(0, this.campus.length - 1)
+
     this.$toast.loading({
       message: '生成结果页中',
       duration: 0
     })
 
-    const content = document.getElementById('export')
-    const height = content.clientHeight
-    const width = content.clientWidth
-    const canvas = document.createElement('canvas')
-    const scale = 3
+    setTimeout(() => {
+      const content = document.getElementById('export')
+      const height = content.clientHeight
+      const width = content.clientWidth
+      const canvas = document.createElement('canvas')
+      const scale = 3
 
-    const container = document.getElementById('app')
-    const viewHeight = container.clientHeight
-    const viewWidth = container.clientWidth
-    this.scaleRate = Math.min(viewHeight / height * 0.95, viewWidth / width * 0.85)
+      const container = document.getElementById('app')
+      const viewHeight = container.clientHeight
+      const viewWidth = container.clientWidth
+      this.scaleRate = Math.min(viewHeight / height * 0.95, viewWidth / width * 0.85)
 
-    canvas.height = height * scale
-    canvas.width = width * scale
-    canvas.style.height = `${height * scale}px`
-    canvas.style.width = `${width * scale}px`
-    // canvas.getContext('2d').scale(scale, scale)
+      canvas.height = height * scale
+      canvas.width = width * scale
+      canvas.style.height = `${height * scale}px`
+      canvas.style.width = `${width * scale}px`
+      // canvas.getContext('2d').scale(scale, scale)
 
-    const options = {
-      scale,
-      canvas,
-      logging: process.env.NODE_ENV === 'development',
-      height,
-      width,
-      useCORS: true
-    }
+      const options = {
+        scale,
+        canvas,
+        logging: process.env.NODE_ENV === 'development',
+        height,
+        width,
+        useCORS: true
+      }
 
-    html2canvas(content, options)
-      .then((canvas) => {
-        const img = canvas.toDataURL('image/jpg')
-        const exportImg = document.createElement('img')
-        exportImg.src = img
-        exportImg.style.position = 'absolute'
-        exportImg.style.top = 0
-        exportImg.style.left = 0
-        exportImg.style.width = '100%'
-        exportImg.style.opacity = 0
-        exportImg.style.zIndex = 999
-        document.body.appendChild(exportImg)
+      html2canvas(content, options)
+        .then((canvas) => {
+          const img = canvas.toDataURL('image/jpg')
+          const exportImg = document.createElement('img')
+          exportImg.src = img
+          exportImg.style.position = 'absolute'
+          exportImg.style.top = 0
+          exportImg.style.left = 0
+          exportImg.style.width = '100%'
+          exportImg.style.opacity = 0
+          exportImg.style.zIndex = 999
+          document.body.appendChild(exportImg)
 
-        this.spawned = true
-        this.$toast.clear()
-      })
+          this.spawned = true
+          this.$toast.clear()
+        })
+    }, 500)
   }
 }
 </script>
