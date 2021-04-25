@@ -45,7 +45,7 @@ def login(request):
                 sex = user.sex
                 city = user.city
                 country = user.country
-                return JsonResponse({'data': {'openID': openID, 'avatar': avatar}, 'msg': '', 'status': 200})
+                return JsonResponse({'data': {'openid': openID, 'avatar': avatar}, 'msg': '', 'status': 200})
             else:
                 next_response = requests.get(url=next_url, params=next_params)
                 user_str = next_response.content.decode()
@@ -61,9 +61,7 @@ def login(request):
                     user = User.objects.create(openid=openID, avatar=avatar, province=province, sex=sex,
                                                city=city, country=country)
                     user.save()
-                    return JsonResponse({'data': {'openID': openID, 'avatar': avatar, 'province': province,
-                                                  'sex': sex, 'city': city, 'country': country}, 'msg': '',
-                                         'status': 200})
+                    return JsonResponse({'data': {'openid': openID, 'avatar': avatar,}, 'msg': '', 'status': 200})
 
 
 def test(request):
