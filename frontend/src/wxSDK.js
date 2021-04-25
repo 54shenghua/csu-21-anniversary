@@ -4,14 +4,14 @@ import { Axios } from './config/axios'
 const options = {
   title: '拾光中南',
   desc: '和21岁的中南，一起回到相遇的那天！',
-  link: 'https://csu21.54sher.com',
+  link: 'https://csu21.54sher.com/',
   imgUrl: 'https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/share.jpg'
 }
 
 export function initWXJSSDK (url) {
   // alert(url)
   Axios.post('ticket/', {
-    url: 'https%3A%2F%2Fcsu21.54sher.com'
+    url: 'https%3A%2F%2Fcsu21.54sher.com/'
   }).then((res) => {
     console.log(res.data)
     wx.config({
