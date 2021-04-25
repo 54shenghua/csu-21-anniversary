@@ -2,10 +2,9 @@ import axios from 'axios'
 
 let baseURL = ''
 if (process.env.NODE_ENV === 'production') {
-  baseURL = 'http://139.9.222.42:8000/api/'
+  baseURL = 'https://csu21api.54sher.com/api/'
 } else {
-  // baseURL = 'http://localhost:8000/'
-  baseURL = 'http://139.9.222.42:8000/api/'
+  baseURL = 'http://localhost:8000/'
 }
 
 export const Axios = axios.create({
