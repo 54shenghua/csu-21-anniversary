@@ -5,8 +5,7 @@
       <span class="title">你好，中南人</span>
       <div class="avatar-box">
         <img class="avatar-outer" src="https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/avatar-outer.png" />
-        <!-- <img v-if="$store.avatar !== ''" class="avatar" :src="$store.avatar"> -->
-        <img class="avatar" src="../assets/bg2.jpg">
+        <img v-if="$store.avatar !== ''" class="avatar" :src="$store.avatar">
       </div>
       <div class="input-box">
         <input class="input" v-model="name" placeholder="请输入你的名字" />
