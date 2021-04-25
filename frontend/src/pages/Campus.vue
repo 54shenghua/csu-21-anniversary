@@ -33,7 +33,12 @@ export default {
   },
   methods: {
     clickHdl (id) {
-      this.campus.push(id)
+      const exist = this.campus.indexOf(id)
+      if (exist === -1) {
+        this.campus.push(id)
+      } else {
+        this.campus.splice(exist, 1)
+      }
     },
     submit () {
       if (this.campus.length === 0) {

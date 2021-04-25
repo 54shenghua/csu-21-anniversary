@@ -72,7 +72,12 @@ export default {
   },
   methods: {
     clickHdl (id) {
-      this.moments.push(id)
+      const exist = this.moments.indexOf(id)
+      if (exist === -1) {
+        this.moments.push(id)
+      } else {
+        this.moments.splice(exist, 1)
+      }
     },
     submit () {
       if (this.moments.length === 0) {
