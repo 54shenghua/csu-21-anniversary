@@ -1,3 +1,5 @@
+import store from './store'
+
 const imgs = [
   'bg.jpg',
   // 'summary-title.png',
@@ -44,6 +46,8 @@ export function imgPreloader () {
         reject(new Error('image preload failed'))
       }
       img.src = prefix + item
+
+      store.images.push(img)
     }))
   })
   return Promise.all(promises)

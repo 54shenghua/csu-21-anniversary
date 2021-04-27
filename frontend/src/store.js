@@ -8,6 +8,7 @@ class Store {
     this.avatar = ''
     this.campus = []
     this.moments = []
+    this.images = []
   }
 
   calcDays () {
