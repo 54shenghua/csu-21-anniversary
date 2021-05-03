@@ -2,13 +2,13 @@ import axios from 'axios'
 
 let baseURL = ''
 if (process.env.NODE_ENV === 'production') {
-  baseURL = ''
+  baseURL = 'https://csu21api.54sher.com/api/'
 } else {
-  baseURL = ''
+  baseURL = 'http://localhost:8000/'
 }
 
 export const Axios = axios.create({
-  baseURL: baseURL,
+  baseURL,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json'

@@ -5,7 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>TITLE</title>
+    <title>拾光中南</title>
+    <script>
+      history.pushState(null, null, document.URL);
+      window.addEventListener('popstate', () => {});
+    </script>
     <style>
       body {
         height: 100vh;
@@ -13,6 +17,10 @@
         padding: 0;
         margin: 0;
       }
+
+      /* * {
+        outline: 1px solid black;
+      } */
     </style>
   </head>
   <body>

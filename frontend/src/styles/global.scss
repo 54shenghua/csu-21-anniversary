@@ -1,4 +1,106 @@
+$font-color: rgb(6,76,148);
+
 .container {
   height: 100%;
   width: 100%;
+}
+
+button {
+  height: 3.5rem;
+  width: 6.84rem;
+  background-image: url('https://csu21-h5.oss-cn-guangzhou.aliyuncs.com/assets/button.png');
+  background-size: cover;
+  background-color: initial;
+  border: none;
+  outline: none;
+  font-family: fangzheng;
+  font-size: 1.1rem;
+  color: white;
+  padding: {
+    left: .7rem;
+    top: .4rem;
+  }
+  transition: transform .3s;
+
+  &:active {
+    transform: scale(.9);
+    transition: transform .3s;
+  }
+}
+
+.copyright {
+  width: 100%;
+  position: absolute;
+  bottom: 5px;
+  text-align: center;
+  font-family: subtitle;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: white;
+  transform: scale(.8);
+  opacity: 0;
+  animation: fade .5s 1.3s;
+  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+
+  span {
+    display: block;
+  }
+}
+
+@font-face {
+  font-family: title;
+  src: url('../assets/fonts/title.ttf');
+}
+
+@font-face {
+  font-family: subtitle;
+  src: url('../assets/fonts/subtitle.ttf');
+}
+
+@font-face {
+  font-family: transition;
+  src: url('../assets/fonts/transition.ttf');
+}
+
+@font-face {
+  font-family: fangzheng;
+  src: url('../assets/fonts/fangzheng.ttf');
+}
+
+@font-face {
+  font-family: moment;
+  src: url('../assets/fonts/moment.ttf');
+}
+
+@font-face {
+  font-family: moment-bold;
+  src: url('../assets/fonts/moment-bold.ttf');
+}
+
+@font-face {
+  font-family: summary-bottom;
+  src: url('../assets/fonts/summary-bottom.ttf');
+}
+
+@keyframes fade-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
